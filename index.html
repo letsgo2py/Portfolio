@@ -87,7 +87,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
 
-        function sendQuery() {
+    function sendQuery() {
         const query = document.getElementById("query").value;
         const loader = document.getElementById("loader");
         const responseDiv = document.getElementById("response");
@@ -107,9 +107,8 @@
         .then(data => {
             // Hide the loader and display the response
             loader.style.display = "none";
-            if (data.answer) {
-                let resp = data.answer
-                responseDiv.textContent = resp.slice(0, -100); // 100 is the extra response in the end, removing it
+            if (data.response) {
+                responseDiv.textContent = data.response
             } else {
                 responseDiv.textContent = "No response from the chatbot.";
             }

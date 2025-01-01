@@ -68,4 +68,10 @@ def handler(event, context):
         if hasattr(token, 'choices'):
             print(token.choices[0].delta.content, end='', flush=True)
 
-    return response
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            'response': response['choices'][0]['message']['content']  # Modify as per your API response structure
+        })
+    }
+
