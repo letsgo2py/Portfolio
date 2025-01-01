@@ -64,8 +64,8 @@ def handler(event, context):
         stop=["<|eot_id|>", "<|eom_id|>"],
     )
 
-    result = "".join(token['choices'][0]['delta']['content'] for token in response if 'choices' in token)
-    return {
-        'statusCode': 200,
-        'body': json.dumps({'response': result})
-    }
+    for token in response:
+        if hasattr(token, 'choices'):
+            print(token.choices[0].delta.content, end='', flush=True)
+
+    return response
